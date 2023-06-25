@@ -1,26 +1,47 @@
+import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
+import usePasswords from "../hooks/usePasswords";
 
 const TITLE_INPUT_NAME = "name";
 const PASSWORD_INPUT_NAME = "password";
 const CLIENT_INPUT_NAME = "client";
 
 function AddPage() {
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const { addPassword: addPasswordToStorage } = usePasswords();
+
+  useEffect(() => {
+    if (!showSuccessMessage) {
+      return;
+    }
+
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+    }, 3000);
+  }, [showSuccessMessage]);
+
   const addPassword = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
-    const name = formData.get(TITLE_INPUT_NAME);
-    const password = formData.get(PASSWORD_INPUT_NAME);
-    const client = formData.get(CLIENT_INPUT_NAME);
+    const title = formData.get(TITLE_INPUT_NAME) as string;
+    const password = formData.get(PASSWORD_INPUT_NAME) as string;
+    const client = formData.get(CLIENT_INPUT_NAME) as string;
 
-    console.warn({ name, password, client });
+    addPasswordToStorage({
+      title,
+      password,
+      client,
+    });
+
+    setShowSuccessMessage(true);
 
     form.reset();
   };
 
   return (
-    <main>
+    <div className="container">
       <h1>Add a bloody hot password</h1>
 
       <form onSubmit={addPassword}>
@@ -48,7 +69,9 @@ function AddPage() {
 
         <button>Add</button>
       </form>
-    </main>
+
+      {showSuccessMessage && <p>Meeep!!</p>}
+    </div>
   );
 }
 
