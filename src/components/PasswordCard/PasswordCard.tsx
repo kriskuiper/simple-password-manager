@@ -7,6 +7,7 @@ function PasswordCard({ password }: { password: Password }) {
     <Link
       to={`/${password.title}`}
       className="block border-gray-200 border-b pb-4"
+      data-cy="password-card"
     >
       <div
         style={{ height: "4px", backgroundColor: password.color }}

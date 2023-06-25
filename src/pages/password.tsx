@@ -11,7 +11,7 @@ function PasswordPage() {
   const { passwordId } = useParams();
   const { passwords } = usePasswords();
   const password = passwords.find(
-    (originalPassword) => originalPassword.title === passwordId
+    (originalPassword: Password) => originalPassword.title === passwordId
   );
   const showPasswordLabel = passwordIsShown ? "Hide password" : "Show password";
   const inputType = passwordIsShown ? "text" : "password";
