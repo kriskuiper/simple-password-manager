@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
+import { Link } from "react-router-dom";
+
 import usePasswords from "../hooks/usePasswords";
 
 const TITLE_INPUT_NAME = "name";
@@ -69,6 +71,8 @@ function AddPage() {
 
         <button>Add</button>
       </form>
+
+      <Link to="/">Show all passwords</Link>
 
       {showSuccessMessage && <p>Meeep!!</p>}
     </div>
