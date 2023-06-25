@@ -1,8 +1,24 @@
+import type { FormEvent } from "react";
+
 const TITLE_INPUT_NAME = "name";
 const PASSWORD_INPUT_NAME = "password";
 const CLIENT_INPUT_NAME = "client";
 
 function AddPage() {
+  const addPassword = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = formData.get(TITLE_INPUT_NAME);
+    const password = formData.get(PASSWORD_INPUT_NAME);
+    const client = formData.get(CLIENT_INPUT_NAME);
+
+    console.warn({ name, password, client });
+
+    form.reset();
+  };
+
   return (
     <main>
       <h1>Add a bloody hot password</h1>
