@@ -8,23 +8,23 @@ const initialPasswords = [
   {
     title: "Move move password",
     password: "secret123",
-    clientId: 2,
+    client: "Benu Direct",
   },
   {
     title: "Magic box",
     password: "verymagic",
-    clientId: 1,
+    client: "Payroll Select",
   },
 ];
 const examplePassword = {
   title: "My password",
   password: "secret123",
-  clientId: 1,
+  client: "Schotpoort Connect",
 };
 const passwordToRemove = {
   title: "Move move password",
   password: "secret123",
-  clientId: 2,
+  clientId: "KNHB",
 };
 
 describe("usePasswords", () => {

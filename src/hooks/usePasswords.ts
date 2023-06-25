@@ -1,13 +1,17 @@
 import usePersistedState from "./usePersistedState";
 
-type Password = {
+export type Password = {
   title: string;
   password: string;
-  clientId: number;
+  client: string;
+  color?: string;
 };
 
 function usePasswords() {
-  const [passwords, setPasswords] = usePersistedState("passwords", []);
+  const [passwords, setPasswords] = usePersistedState<Password[]>(
+    "passwords",
+    []
+  );
 
   const addPassword = (password: Password) => {
     setPasswords([...passwords, password]);
