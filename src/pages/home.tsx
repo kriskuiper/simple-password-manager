@@ -14,9 +14,13 @@ function HomePage() {
       </header>
       <main>
         {userHasPasswords ? (
-          passwords.map((password: Password) => <p>{password.title}</p>)
+          passwords.map((password: Password) => (
+            <p data-cy="password-card">{password.title}</p>
+          ))
         ) : (
-          <p>You don't have any passwords yet, feel free to add one</p>
+          <p data-cy="passwords-empty-state-message">
+            You don't have any passwords yet, feel free to add one
+          </p>
         )}
         <Link to="/add">Add new password</Link>
       </main>

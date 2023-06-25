@@ -26,7 +26,7 @@ function AddPage() {
     fetch("/api/clients")
       .then((response) => response.json())
       .then((result) => setClients(result));
-  }, []);
+  }, [clients.length]);
 
   useEffect(() => {
     if (!showSuccessMessage) {
@@ -65,18 +65,32 @@ function AddPage() {
       <form onSubmit={addPassword}>
         <div>
           <label htmlFor="name">Title:</label>
-          <input type="text" id="name" name={TITLE_INPUT_NAME} required />
+          <input
+            type="text"
+            id="name"
+            name={TITLE_INPUT_NAME}
+            required
+            data-cy="add-page-title-input"
+          />
           <p>Give your password a title so you can identify it later on</p>
         </div>
 
         <div>
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password" data-cy="add-page-password-input">
+            Password:
+          </label>
           <input type="text" id="password" name="password" required />
         </div>
 
         <div>
           <label htmlFor="client">Client</label>
-          <select name={CLIENT_INPUT_NAME} id="client" defaultValue="" required>
+          <select
+            name={CLIENT_INPUT_NAME}
+            id="client"
+            defaultValue=""
+            required
+            data-cy="add-page-client-input"
+          >
             <option value="" disabled>
               Choose a client
             </option>
@@ -88,12 +102,16 @@ function AddPage() {
           </select>
         </div>
 
-        <button type="submit">Add</button>
+        <button type="submit" data-cy="add-page-submit-button">
+          Add
+        </button>
       </form>
 
-      <Link to="/">Show all passwords</Link>
+      <Link to="/" data-cy="add-page-back-to-home-button">
+        Show all passwords
+      </Link>
 
-      {showSuccessMessage && <p>Meeep!!</p>}
+      {showSuccessMessage && <p data-cy="add-page-success-message">Meeep!!</p>}
     </div>
   );
 }

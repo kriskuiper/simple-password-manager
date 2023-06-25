@@ -24,7 +24,7 @@ const examplePassword = {
 const passwordToRemove = {
   title: "Move move password",
   password: "secret123",
-  clientId: "KNHB",
+  client: "KNHB",
 };
 
 describe("usePasswords", () => {
