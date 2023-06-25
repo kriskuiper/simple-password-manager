@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-import usePasswords, { Password } from "../hooks/usePasswords";
+
+import usePasswords from "../hooks/usePasswords";
+import PasswordsOverview from "../components/PasswordsOverview";
 
 function HomePage() {
   const { passwords } = usePasswords();
@@ -14,9 +16,7 @@ function HomePage() {
       </header>
       <main>
         {userHasPasswords ? (
-          passwords.map((password: Password) => (
-            <p data-cy="password-card">{password.title}</p>
-          ))
+          <PasswordsOverview passwords={passwords} />
         ) : (
           <p data-cy="passwords-empty-state-message">
             You don't have any passwords yet, feel free to add one
