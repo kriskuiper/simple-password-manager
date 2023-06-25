@@ -4,8 +4,7 @@ function PasswordCard({ password }: { password: Password }) {
   // TODO: ideally we wouldn't use the name here but rather an id or slug
   // but we don't have that data at the moment of writing.
   return (
-    <Link
-      to={`/${password.title}`}
+    <div
       className="block border-gray-200 border-b pb-4"
       data-cy="password-card"
     >
@@ -16,9 +15,14 @@ function PasswordCard({ password }: { password: Password }) {
 
       <div className="px-4">
         <h2 className="font-bold">{password.title}</h2>
-        <p>{password.client}</p>
+        <Link to={`/clients/${password.client}`} className="inline-block mb-4">
+          {password.client}
+        </Link>
+        <Link to={`/${password.title}`} className="inline-block underline">
+          Check credentials
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 }
 
