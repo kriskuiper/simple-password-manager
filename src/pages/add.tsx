@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AddPasswordForm from "../components/AddPasswordForm";
 
 import usePasswords from "../hooks/usePasswords";
+import DefaultLayout from "../layouts/default";
 
 function AddPage() {
   const [clients, setClients] = useState<Client[]>([]);
@@ -46,21 +47,28 @@ function AddPage() {
   };
 
   return (
-    <div className="container">
-      <h1>Add a bloody hot password</h1>
+    <DefaultLayout>
+      <h1 className="text-3xl font-bold text-center">
+        Add a bloody hot password
+      </h1>
 
       <AddPasswordForm
         clients={clients}
         isLoadingClients={isLoadingClients}
         onSubmit={handlePasswordFormSubmit}
+        className="mb-4"
       />
 
-      <Link to="/" data-cy="add-page-back-to-home-button">
+      <Link
+        to="/"
+        data-cy="add-page-back-to-home-button"
+        className="block text-purple-500"
+      >
         Show all passwords
       </Link>
 
       {showSuccessMessage && <p data-cy="add-page-success-message">Meeep!!</p>}
-    </div>
+    </DefaultLayout>
   );
 }
 

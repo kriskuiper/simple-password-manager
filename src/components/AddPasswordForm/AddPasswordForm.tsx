@@ -8,12 +8,14 @@ type AddPasswordFormProps = {
   onSubmit: (password: Password) => void;
   clients: Client[];
   isLoadingClients: boolean;
+  className?: string;
 };
 
 function AddPasswordForm({
   onSubmit,
   clients,
   isLoadingClients,
+  className,
 }: AddPasswordFormProps) {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -39,33 +41,51 @@ function AddPasswordForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Title:</label>
+      <div className="mb-4">
+        <label htmlFor="name" className="block font-bold">
+          Title:
+        </label>
         <input
           type="text"
           id="name"
           name={TITLE_INPUT_NAME}
           required
           data-cy="add-page-title-input"
+          className="block border border-gray-200 w-full my-2 p-2"
         />
-        <p>Give your password a title so you can identify it later on</p>
+        <p className="text-xs">
+          Give your password a title so you can identify it later on
+        </p>
       </div>
 
-      <div>
-        <label htmlFor="password" data-cy="add-page-password-input">
+      <div className="mb-4">
+        <label
+          htmlFor="password"
+          data-cy="add-page-password-input"
+          className="block font-bold mb-2"
+        >
           Password:
         </label>
-        <input type="text" id="password" name="password" required />
+        <input
+          type="text"
+          id="password"
+          name="password"
+          required
+          className="block border border-gray-200 w-full p-2"
+        />
       </div>
 
       <div>
-        <label htmlFor="client">Client</label>
+        <label htmlFor="client" className="block font-bold mb-2">
+          Client
+        </label>
         <select
           name={CLIENT_INPUT_NAME}
           id="client"
           defaultValue=""
           required
           data-cy="add-page-client-input"
+          className="block border border-gray-200 w-full my-2 p-2"
         >
           <option value="" disabled>
             {isLoadingClients ? "Loading clients.." : "Choose a client"}
@@ -78,7 +98,11 @@ function AddPasswordForm({
         </select>
       </div>
 
-      <button type="submit" data-cy="add-page-submit-button">
+      <button
+        type="submit"
+        data-cy="add-page-submit-button"
+        className="bg-purple-500 text-white py-4 px-6 rounded-full block mt-10 w-full"
+      >
         Add
       </button>
     </form>

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 
 import HomePage from "./pages/home";
 import AddPage from "./pages/add";
+import PasswordPage from "./pages/password";
 
 type ReactRouterRoute = {
   path: string;
@@ -16,6 +17,10 @@ const routes: ReactRouterRoute[] = [
   {
     path: "/add",
     element: <AddPage />,
+  },
+  {
+    path: "/:passwordId",
+    element: <PasswordPage />,
   },
 ];
 

@@ -1,18 +1,15 @@
+import PasswordCard from "../PasswordCard";
+
 type PasswordsOverviewProps = {
   passwords: Password[];
 };
 
 function PasswordsOverview({ passwords }: PasswordsOverviewProps) {
   return (
-    <ul>
+    <ul className="grid gap-4 md:grid-cols-2">
       {passwords.map((password: Password) => (
         <li>
-          <div
-            data-cy="password-card"
-            style={{ backgroundColor: password.color }}
-          >
-            <h2>{password.title}</h2>
-          </div>
+          <PasswordCard password={password} />
         </li>
       ))}
     </ul>
