@@ -8,9 +8,25 @@ const TITLE_INPUT_NAME = "name";
 const PASSWORD_INPUT_NAME = "password";
 const CLIENT_INPUT_NAME = "client";
 
+type Client = {
+  name: string;
+  color: string;
+};
+
 function AddPage() {
+  const [clients, setClients] = useState<Client[]>([]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const { addPassword: addPasswordToStorage } = usePasswords();
+
+  useEffect(() => {
+    if (clients.length > 0) {
+      return;
+    }
+
+    fetch("/api/clients")
+      .then((response) => response.json())
+      .then((result) => setClients(result));
+  }, []);
 
   useEffect(() => {
     if (!showSuccessMessage) {
@@ -64,12 +80,15 @@ function AddPage() {
             <option value="" disabled>
               Choose a client
             </option>
-            <option value="one">Option one</option>
-            <option value="two">Option two</option>
+            {clients.map((client) => (
+              <option key={client.name} value={client.name}>
+                {client.name}
+              </option>
+            ))}
           </select>
         </div>
 
-        <button>Add</button>
+        <button type="submit">Add</button>
       </form>
 
       <Link to="/">Show all passwords</Link>
