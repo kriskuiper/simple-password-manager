@@ -32,3 +32,7 @@
 This project consists of two types of tests
 1. e2e tests using [Cypress](https://www.cypress.io/app/)
 2. Unit tests using [Vitest](https://vitest.dev/)
+
+## ✨ Wishlist
+- [ ] Create Github actions to run tests and deployment in CI/CD
+-  [ ] Add e2e tests for visiting a client's page to test for 'filtering'
