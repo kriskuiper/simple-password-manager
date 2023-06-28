@@ -36,3 +36,4 @@ This project consists of two types of tests
 ## ✨ Wishlist
 - [ ] Create Github actions to run tests and deployment in CI/CD
 -  [ ] Add e2e tests for visiting a client's page to test for 'filtering'
+-  [ ] Make tests more DRY by moving the `get("data-cy=['some-thing']")` to a custom command
